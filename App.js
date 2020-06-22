@@ -5,7 +5,7 @@ import {ApolloProvider, graphql} from 'react-apollo';
 import gql from 'graphql-tag';
 
 const client = new ApolloClient({
-  link: new HttpLink({uri: 'http://192.168.15.14:3000/graphql'}),
+  link: new HttpLink({uri: 'http://localhost:3000/graphql'}),
   cache: new InMemoryCache(),
 });
 
