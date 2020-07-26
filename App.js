@@ -20,8 +20,6 @@ const userQuery = gql`
 
 const UserComponent = graphql(userQuery)((props) => {
   const {error, users} = props.data;
-  console.log({error});
-  console.log({users});
   if (error) {
     return <Text>err in fetch</Text>;
   }
@@ -42,7 +40,6 @@ export default class App extends Component {
       <ApolloProvider client={client}>
         <View style={styles.container}>
           <Text style={styles.welcome}>Be ready for User in DB:</Text>
-          <UserComponent />
         </View>
       </ApolloProvider>
     );
@@ -60,10 +57,5 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
     margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
   },
 });
