@@ -12,6 +12,8 @@ const exercises = [
   {
     name: 'Biceps bombado',
     img: EX1,
+    number: '15',
+    weight: '3kg',
     repetitions: '2',
     minutesOfInterval: '3',
     notes: 'faz devagar!',
@@ -20,7 +22,9 @@ const exercises = [
   {
     name: 'Abdomem tanquinho',
     img: EX3,
-    repetitions: '2',
+    number: '35',
+    weight: '10kg',
+    repetitions: '3',
     minutesOfInterval: '3',
     notes: 'Vai!',
     DaysOfWeek: 'SEG, QUA, SEX',
@@ -28,6 +32,8 @@ const exercises = [
   {
     name: 'Cardio pra comer carbs depois',
     img: EX7,
+    number: 'X',
+    weight: 'X',
     repetitions: '1',
     minutesOfInterval: '0',
     notes: 'Bike 30 minutos!',
@@ -58,8 +64,13 @@ const FirstTab = () => {
                   />
                   <View style={styles.details}>
                     <Text style={styles.name}>{ex.notes}</Text>
-                    <Text>Reps: {ex.repetitions}</Text>
-                    <Text>Interval minutes: {ex.minutesOfInterval}</Text>
+                    <Text>
+                      Num of times: {ex.number}. Weight: {ex.weight}.
+                    </Text>
+                    <Text>
+                      Reps: {ex.repetitions}. Interval minutes:{' '}
+                      {ex.minutesOfInterval}
+                    </Text>
                     <Text>Days of the week: {ex.DaysOfWeek}</Text>
                   </View>
                 </View>
