@@ -16,7 +16,7 @@ const exercises = [
     weight: '3kg',
     repetitions: '2',
     minutesOfInterval: '3',
-    notes: 'faz devagar!',
+    notes: 'Faz devagar!',
     DaysOfWeek: 'SEG, QUA, SEX',
   },
   {
@@ -48,8 +48,8 @@ const FirstTab = () => {
         <ScrollView style={styles.scrollView}>
           <Card>
             <View style={styles.add}>
-              <Image height={20} width={20} source={ADD_BLACK} />
-              <Text style={styles.addText}>Add new Exercise</Text>
+              <Image height={14} width={14} source={ADD_BLACK} />
+              <Text style={styles.addText}>New Exercise</Text>
             </View>
           </Card>
 
@@ -64,14 +64,16 @@ const FirstTab = () => {
                   />
                   <View style={styles.details}>
                     <Text style={styles.name}>{ex.notes}</Text>
-                    <Text>
+                    <Text style={styles.font}>
                       Num of times: {ex.number}. Weight: {ex.weight}.
                     </Text>
-                    <Text>
+                    <Text style={styles.font}>
                       Reps: {ex.repetitions}. Interval minutes:{' '}
                       {ex.minutesOfInterval}
                     </Text>
-                    <Text>Days of the week: {ex.DaysOfWeek}</Text>
+                    <Text style={styles.font}>
+                      Days of the week: {ex.DaysOfWeek}
+                    </Text>
                   </View>
                 </View>
               </Card>
@@ -95,8 +97,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   name: {
-    color: colors.myYellow,
+    color: colors.myBlue,
     fontWeight: 'bold',
+    fontStyle: 'italic',
   },
   details: {
     marginLeft: 8,
@@ -113,6 +116,10 @@ const styles = StyleSheet.create({
   addText: {
     marginLeft: 8,
     fontWeight: 'bold',
+  },
+  font: {
+    fontStyle: 'italic',
+    color: colors.Tuna,
   },
 });
 

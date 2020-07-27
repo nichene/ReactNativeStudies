@@ -6,8 +6,8 @@ import {Image} from 'react-native';
 import {TextInput} from 'react-native';
 
 const LoginPage = ({navigation}) => {
-  const [email, setEmail] = React.useState('Email');
-  const [password, setPassword] = React.useState('Password');
+  const [email, setEmail] = React.useState(' Email');
+  const [password, setPassword] = React.useState(' Password');
 
   return (
     <View style={styles.wrapper}>
@@ -18,20 +18,19 @@ const LoginPage = ({navigation}) => {
         <TextInput style={styles.textInput} value={password} />
       </View>
       <View style={styles.buttonContainer}>
-        <Button
-          style={styles.buttonStyle}
-          color={colors.myYellow}
-          title=" Sign up here "
-          onPress={() => navigation.navigate('SignUpPage')}
-        />
         <View style={styles.space} />
         <Button
           style={styles.buttonStyle}
           color={colors.myYellow}
-          title="     Login     "
+          title="       Hustle!       "
           onPress={() => navigation.navigate('HomePage')}
         />
       </View>
+      <Text
+        style={styles.signUpText}
+        onPress={() => navigation.navigate('SignUpPage')}>
+        Not SmartFit yet? sign up here!
+      </Text>
     </View>
   );
 };
@@ -56,10 +55,10 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     alignItems: 'flex-start',
+    right: 7,
     margin: 20,
     flexDirection: 'row',
     flex: 1,
-    justifyContent: 'space-around',
   },
   buttonStyle: {
     height: 40,
@@ -77,6 +76,10 @@ const styles = StyleSheet.create({
   },
   space: {
     margin: 10,
+  },
+  signUpText: {
+    color: colors.myYellow,
+    bottom: 30,
   },
 });
 
