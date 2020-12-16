@@ -14,8 +14,16 @@ const SignUpPage = ({navigation}) => {
         <Image width={24} height={24} source={LOGO} />
         <Text style={styles.wellcomeText}>SupaFit</Text>
         <TextInput style={styles.textInput} placeholder={email} />
-        <TextInput style={styles.textInput} placeholder={password} />
-        <TextInput style={styles.textInput} placeholder={confpassword} />
+        <TextInput
+          secureTextEntry={true}
+          style={styles.textInput}
+          placeholder={password}
+        />
+        <TextInput
+          secureTextEntry={true}
+          style={styles.textInput}
+          placeholder={confpassword}
+        />
       </View>
       <View style={styles.buttonContainer}>
         <View style={styles.space} />

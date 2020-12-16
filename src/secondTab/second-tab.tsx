@@ -49,11 +49,11 @@ const exercises = [
   },
 ];
 
-type FirstTabProp = {
-  shouldShowList: (b: Boolean) => void;
+type SecondTabProp = {
+  shouldShowImportList: (b: Boolean) => void;
 };
 
-const FirstTab: React.FC<FirstTabProp> = ({shouldShowList}) => {
+const SecondTab: React.FC<SecondTabProp> = ({shouldShowImportList}) => {
   const [showNewModal, setShowNewModal] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [modalEx, setmodalEx] = useState();
@@ -86,10 +86,10 @@ const FirstTab: React.FC<FirstTabProp> = ({shouldShowList}) => {
         <ScrollView>
           <Card>
             <TouchableOpacity
-              onPress={() => shouldShowList(true)}
+              onPress={() => shouldShowImportList(true)}
               style={styles.add}>
               <Image height={8} width={8} source={LIST} />
-              <Text style={styles.addText}>Select Exercise Set</Text>
+              <Text style={styles.addText}>Show Me My Shared Sets</Text>
             </TouchableOpacity>
           </Card>
 
@@ -150,6 +150,7 @@ const FirstTab: React.FC<FirstTabProp> = ({shouldShowList}) => {
               </View>
             );
           })}
+
           <Card>
             <TouchableOpacity
               onPress={() => setShowNewModal(true)}
@@ -213,6 +214,8 @@ const styles = StyleSheet.create({
     color: colors.Tuna,
   },
   modal: {
+    // width: 250,
+    // height: 500,
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
@@ -221,4 +224,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default FirstTab;
+export default SecondTab;

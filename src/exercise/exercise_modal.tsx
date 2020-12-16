@@ -3,6 +3,7 @@ import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {Card} from 'react-native-elements';
 import {TextInput} from 'react-native-gesture-handler';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+import {CLOSE} from '../image';
 import colors from '../styles/colors';
 import {Exercise} from './model/exercise';
 
@@ -19,10 +20,15 @@ export const ExerciseModal: React.FC<exerciseProps> = ({
 }) => {
   return (
     <View style={styles.wrapper}>
-      <Text style={styles.edtText}>
-        {' '}
-        Would you like to edit this exercise?{' '}
-      </Text>
+      <TouchableOpacity onPress={() => onCancelModal()}>
+        <View style={styles.close}>
+          <Image height={2} width={2} source={CLOSE} />
+        </View>
+        <Text style={styles.edtText}>
+          {' '}
+          Would you like to edit this exercise?{' '}
+        </Text>
+      </TouchableOpacity>
       <Card title={exercise.name}>
         <View style={styles.container}>
           <KeyboardAwareScrollView
@@ -57,9 +63,6 @@ export const ExerciseModal: React.FC<exerciseProps> = ({
       <View style={styles.options}>
         <TouchableOpacity onPress={() => onCancelModal()}>
           <Text style={styles.deltext}>Delete Exercise</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => onCancelModal()}>
-          <Text style={styles.savetext}>Cancel</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => onSaveModal(exercise)}>
           <Text style={styles.savetext}>Save</Text>
@@ -119,7 +122,7 @@ const styles = StyleSheet.create({
   deltext: {
     fontWeight: 'bold',
     marginLeft: 4,
-    marginRight: 18,
+    marginRight: 80,
   },
   savetext: {
     fontWeight: 'bold',
@@ -129,5 +132,8 @@ const styles = StyleSheet.create({
   font: {
     fontStyle: 'italic',
     color: colors.Tuna,
+  },
+  close: {
+    alignSelf: 'flex-end',
   },
 });

@@ -4,6 +4,11 @@ export const PERSON = require('./person.png');
 export const ADD = require('./add.png');
 export const ADD_BLACK = require('./add_black.png');
 
+export const DELETE = require('./delete.png');
+export const CLOSE = require('./close.png');
+export const LIST = require('./list.png');
+export const SHARE = require('./share.png');
+
 //exercises
 export const EX1 = require('./ex1.png');
 export const EX2 = require('./ex2.png');
