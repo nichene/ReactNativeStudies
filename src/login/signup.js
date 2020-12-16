@@ -3,9 +3,10 @@ import {Button, Image, StyleSheet, Text, TextInput, View} from 'react-native';
 import {LOGO} from '../image/index.js';
 import colors from '../styles/colors';
 
-const LoginPage = ({navigation}) => {
+const SignUpPage = ({navigation}) => {
   const [email, setEmail] = React.useState(' Email');
   const [password, setPassword] = React.useState(' Password');
+  const [confpassword, setConfPassword] = React.useState(' Confirm password');
 
   return (
     <View style={styles.wrapper}>
@@ -14,21 +15,18 @@ const LoginPage = ({navigation}) => {
         <Text style={styles.wellcomeText}>SupaFit</Text>
         <TextInput style={styles.textInput} placeholder={email} />
         <TextInput style={styles.textInput} placeholder={password} />
+        <TextInput style={styles.textInput} placeholder={confpassword} />
       </View>
       <View style={styles.buttonContainer}>
         <View style={styles.space} />
         <Button
           style={styles.buttonStyle}
           color={colors.myYellow}
-          title="       Hustle!       "
+          title="       Let me in!       "
           onPress={() => navigation.navigate('HomePage')}
         />
       </View>
-      <Text
-        style={styles.signUpText}
-        onPress={() => navigation.navigate('SignUpPage')}>
-        Not SupaFit yet? sign up here!
-      </Text>
+      <Text style={styles.signUpText}>Hey Ho! Let's Go Get Ripped!</Text>
     </View>
   );
 };
@@ -81,4 +79,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default LoginPage;
+export default SignUpPage;

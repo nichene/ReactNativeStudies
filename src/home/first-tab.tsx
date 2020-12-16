@@ -1,5 +1,12 @@
-import React from 'react';
-import {StyleSheet, Text, View, Image} from 'react-native';
+import React, {useState} from 'react';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  Modal,
+  TouchableOpacity,
+} from 'react-native';
 import colors from '../styles/colors';
 import {Card} from 'react-native-elements';
 import {EX1, ADD_BLACK} from '../image';
@@ -7,6 +14,7 @@ import {EX3} from '../image';
 import {EX7} from '../image';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {ScrollView} from 'react-native-gesture-handler';
+import {ExerciseModal} from '../exercise/exercise_modal';
 
 const exercises = [
   {
@@ -42,41 +50,64 @@ const exercises = [
 ];
 
 const FirstTab = () => {
+  const [showModal, setShowModal] = useState(false);
+
+  function showExerciseModal() {
+    setShowModal(true);
+  }
+  function closeModal() {
+    setShowModal(false);
+  }
+
   return (
     <View style={styles.wrapper}>
       <SafeAreaView style={styles.container}>
-        <ScrollView style={styles.scrollView}>
+        <ScrollView>
           <Card>
-            <View style={styles.add}>
+            <TouchableOpacity
+              onPress={() => showExerciseModal()}
+              style={styles.add}>
               <Image height={14} width={14} source={ADD_BLACK} />
               <Text style={styles.addText}>New Exercise</Text>
-            </View>
+            </TouchableOpacity>
           </Card>
+
+          <Modal
+            animationType={'slide'}
+            transparent={false}
+            visible={showModal}
+            onRequestClose={() => closeModal()}>
+            <ExerciseModal />
+          </Modal>
 
           {exercises.map((ex, i) => {
             return (
-              <Card title={ex.name} key={i} style={{borderRadius: 13}}>
-                <View style={styles.container}>
-                  <Image
-                    style={styles.image}
-                    resizeMode="cover"
-                    source={ex.img}
-                  />
-                  <View style={styles.details}>
-                    <Text style={styles.name}>{ex.notes}</Text>
-                    <Text style={styles.font}>
-                      Num of times: {ex.number}. Weight: {ex.weight}.
-                    </Text>
-                    <Text style={styles.font}>
-                      Reps: {ex.repetitions}. Interval minutes:{' '}
-                      {ex.minutesOfInterval}
-                    </Text>
-                    <Text style={styles.font}>
-                      Days of the week: {ex.DaysOfWeek}
-                    </Text>
-                  </View>
-                </View>
-              </Card>
+              <View key={`${ex.name}+${i}`}>
+                <TouchableOpacity onPress={() => showExerciseModal()}>
+                  <Card title={ex.name}>
+                    <View style={styles.container}>
+                      <Image
+                        style={styles.image}
+                        resizeMode="cover"
+                        source={ex.img}
+                      />
+                      <View style={styles.details}>
+                        <Text style={styles.name}>{ex.notes}</Text>
+                        <Text style={styles.font}>
+                          Num of times: {ex.number}. Weight: {ex.weight}.
+                        </Text>
+                        <Text style={styles.font}>
+                          Reps: {ex.repetitions}. Interval minutes:{' '}
+                          {ex.minutesOfInterval}
+                        </Text>
+                        <Text style={styles.font}>
+                          Days of the week: {ex.DaysOfWeek}
+                        </Text>
+                      </View>
+                    </View>
+                  </Card>
+                </TouchableOpacity>
+              </View>
             );
           })}
         </ScrollView>
