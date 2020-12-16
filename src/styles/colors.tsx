@@ -11,6 +11,7 @@ const colors = {
   Jasmine: '#F6F6F4',
   Coconut: '#FFFFFF',
   myBlue: '#263a7a',
+  myLightBlue: '#b3c7f9',
 };
 
 export default colors;

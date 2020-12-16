@@ -1,20 +1,19 @@
 import React, {useState} from 'react';
 import {
-  StyleSheet,
-  Text,
-  View,
   Image,
   Modal,
+  StyleSheet,
+  Text,
   TouchableOpacity,
+  View,
 } from 'react-native';
-import colors from '../styles/colors';
 import {Card} from 'react-native-elements';
-import {EX1, ADD_BLACK} from '../image';
-import {EX3} from '../image';
-import {EX7} from '../image';
-import {SafeAreaView} from 'react-native-safe-area-context';
 import {ScrollView} from 'react-native-gesture-handler';
+import {SafeAreaView} from 'react-native-safe-area-context';
 import {ExerciseModal} from '../exercise/exercise_modal';
+import {Exercise} from '../exercise/model/exercise';
+import {ADD_BLACK, EX1, EX3, EX7} from '../image';
+import colors from '../styles/colors';
 
 const exercises = [
   {
@@ -51,11 +50,18 @@ const exercises = [
 
 const FirstTab = () => {
   const [showModal, setShowModal] = useState(false);
+  const [modalEx, setmodalEx] = useState();
 
-  function showExerciseModal() {
+  function showExerciseModal(ex) {
+    setmodalEx(ex);
     setShowModal(true);
   }
   function closeModal() {
+    setShowModal(false);
+  }
+
+  function saveModalEx(ex: Exercise) {
+    console.log(ex);
     setShowModal(false);
   }
 
@@ -65,25 +71,30 @@ const FirstTab = () => {
         <ScrollView>
           <Card>
             <TouchableOpacity
-              onPress={() => showExerciseModal()}
+              onPress={() => showExerciseModal(null)}
               style={styles.add}>
               <Image height={14} width={14} source={ADD_BLACK} />
               <Text style={styles.addText}>New Exercise</Text>
             </TouchableOpacity>
           </Card>
-
           <Modal
             animationType={'slide'}
-            transparent={false}
+            transparent={true}
             visible={showModal}
             onRequestClose={() => closeModal()}>
-            <ExerciseModal />
+            <View style={styles.modal}>
+              <ExerciseModal
+                exercise={modalEx}
+                onSaveModal={saveModalEx}
+                onCancelModal={closeModal}
+              />
+            </View>
           </Modal>
 
           {exercises.map((ex, i) => {
             return (
               <View key={`${ex.name}+${i}`}>
-                <TouchableOpacity onPress={() => showExerciseModal()}>
+                <TouchableOpacity onPress={() => showExerciseModal(ex)}>
                   <Card title={ex.name}>
                     <View style={styles.container}>
                       <Image
@@ -151,6 +162,15 @@ const styles = StyleSheet.create({
   font: {
     fontStyle: 'italic',
     color: colors.Tuna,
+  },
+  modal: {
+    // width: 250,
+    // height: 500,
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignSelf: 'center',
+    marginTop: 30,
   },
 });
 

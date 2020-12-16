@@ -1,10 +1,10 @@
 export type Exercise = {
-  name?: String;
-  img?: String;
+  name?: string;
+  img?: any;
   number?: number;
   weight?: number;
   repetitions?: number;
   minutesOfInterval?: number;
-  notes?: String;
-  DaysOfWeek?: String;
+  notes?: string;
+  DaysOfWeek?: string;
 };
