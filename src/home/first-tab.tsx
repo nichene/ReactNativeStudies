@@ -12,6 +12,7 @@ import {ScrollView} from 'react-native-gesture-handler';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {ExerciseModal} from '../exercise/exercise_modal';
 import {Exercise} from '../exercise/model/exercise';
+import {NewExerciseModal} from '../exercise/new_exercise_modal';
 import {ADD_BLACK, EX1, EX3, EX7} from '../image';
 import colors from '../styles/colors';
 
@@ -49,6 +50,7 @@ const exercises = [
 ];
 
 const FirstTab = () => {
+  const [showNewModal, setShowNewModal] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [modalEx, setmodalEx] = useState();
 
@@ -65,18 +67,28 @@ const FirstTab = () => {
     setShowModal(false);
   }
 
+  function saveNewExModal(a: string) {
+    console.log(a);
+    setShowNewModal(false);
+  }
+
+  function closeNewModal() {
+    setShowNewModal(false);
+  }
+
   return (
     <View style={styles.wrapper}>
       <SafeAreaView style={styles.container}>
         <ScrollView>
           <Card>
             <TouchableOpacity
-              onPress={() => showExerciseModal(null)}
+              onPress={() => setShowNewModal(true)}
               style={styles.add}>
               <Image height={14} width={14} source={ADD_BLACK} />
               <Text style={styles.addText}>New Exercise</Text>
             </TouchableOpacity>
           </Card>
+
           <Modal
             animationType={'slide'}
             transparent={true}
@@ -87,6 +99,19 @@ const FirstTab = () => {
                 exercise={modalEx}
                 onSaveModal={saveModalEx}
                 onCancelModal={closeModal}
+              />
+            </View>
+          </Modal>
+
+          <Modal
+            animationType={'slide'}
+            transparent={true}
+            visible={showNewModal}
+            onRequestClose={() => closeNewModal()}>
+            <View style={styles.modal}>
+              <NewExerciseModal
+                onSaveNewModal={saveNewExModal}
+                onCancelNewModal={closeNewModal}
               />
             </View>
           </Modal>
