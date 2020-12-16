@@ -56,6 +56,9 @@ export const ExerciseModal: React.FC<exerciseProps> = ({
       </Card>
       <View style={styles.options}>
         <TouchableOpacity onPress={() => onCancelModal()}>
+          <Text style={styles.deltext}>Delete Exercise</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => onCancelModal()}>
           <Text style={styles.savetext}>Cancel</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => onSaveModal(exercise)}>
@@ -89,6 +92,7 @@ const styles = StyleSheet.create({
     padding: 10,
     flexDirection: 'row',
     justifyContent: 'flex-end',
+    alignContent: 'space-between',
   },
   container: {
     flexDirection: 'row',
@@ -111,6 +115,11 @@ const styles = StyleSheet.create({
   },
   addText: {
     fontWeight: 'bold',
+  },
+  deltext: {
+    fontWeight: 'bold',
+    marginLeft: 4,
+    marginRight: 18,
   },
   savetext: {
     fontWeight: 'bold',
